@@ -1,20 +1,42 @@
-import React from "react";
+import { FiBookmark, FiMapPin } from "react-icons/fi";
 
-function Card(props) {
-  console.log(props);
+const Card = ({ company, posted, title, tags, salary, location }) => {
   return (
-    <div className="card">
-      <img
-        src="https://plus.unsplash.com/premium_photo-1715876268339-10ef751ac0de?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1M3x8fGVufDB8fHx8fA%3D%3D"
-        alt=""
-      />
-      <h1>{props.username}</h1>
-      <p>
-        {props.about_you}
-      </p>
-      <button>View Profile</button>
-    </div>
+    <article className="job-card">
+      <div className="job-card-top">
+        <div className="company-logo">{company.charAt(0)}</div>
+        <button type="button" className="save-btn">
+          <FiBookmark /> Save
+        </button>
+      </div>
+
+      <div className="job-info">
+        <div className="company-name">
+          {company} <span>{posted}</span>
+        </div>
+        <h2>{title}</h2>
+
+        <div className="job-tags">
+          {tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="job-card-bottom">
+        <div>
+          <div className="salary">{salary}</div>
+          <div className="location">
+            <FiMapPin /> {location}
+          </div>
+        </div>
+
+        <button type="button" className="apply-btn">
+          Apply
+        </button>
+      </div>
+    </article>
   );
-}
+};
 
 export default Card;
