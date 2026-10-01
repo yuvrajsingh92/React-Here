@@ -90,16 +90,29 @@
 
 // export default App;
 
-// ! useState Using array
+// ! Two Way binding
 
-import React from 'react'
+import React, { useState } from "react";
 
 const App = () => {
+  const submitform = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
   return (
     <div>
-      
+      <form
+        onChange={(e) => {
+          submitform(e);
+        }}
+      >
+        <input type="text" name="" id="" placeholder="Enter Name: " />
+        <br />
+        <br />
+        <button>Submit</button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
